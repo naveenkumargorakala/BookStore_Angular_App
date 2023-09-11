@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="header-content">
+        <div>
+            <b style="font-size: 30px;">Books</b><span> ({{numberOfBooks}}items)</span>
+        </div>
+        <mat-form-field>
+            <mat-label>sort by relavance</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let option of order" [value]="order.value">
+                    {{option.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="cardbody">
+        <div *ngFor="let book of books">
+            <mat-card class="example-card">
+                <mat-card-header class="card-header">
+                    <img mat-card-image src={{book.bookImg}} alt="Photo of a Shiba Inu" class="image">
+                </mat-card-header>
+                <mat-card-content>
+                    <div><b>{{book.bookName}}</b><br><span style="color: rgba(50, 47, 47, 0.837);">by
+                            {{book.authorName}}</span></div><br>
+                    <div style="font-size: 18px;"> <span>Rs.{{book.price}}</span> <span style="padding: 10px;">books: {{
+                            book.quantity}}</span> </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <div >
+                    <button mat-button style="background-color: #A03037;"*ngIf="added" (click)="onClick()">ADD TO BAG</button>
+                    <button mat-button *ngIf="!added" style="background-color: blue;" (click)="onClick()">Added to Bag</button>
+                </div>
+                    <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

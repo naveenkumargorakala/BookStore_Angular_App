@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="example-card">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>My Cart({{cartItems}})
+          <br>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <img mat-card-image class="card" src="../assets/Image 10.png" alt="picture">
+        &nbsp;&nbsp;
+        <div>Dont make me
+          <br> <span style="color: rgba(88, 84, 84, 0.837);">by
+            Sourabh</span>
+          <br><br>&nbsp;&nbsp; Rs.150
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="actions">
+          <div class="circle">_</div>
+          <div class="rectangle">{{cartItems}}</div>
+          <div class="circle">+</div>
+          
+        </div><button style="margin-left: 30px; padding:10px;">Remove</button>
+      </mat-card-actions>
+      <button  class="order-button" mat-raised-button color="primary">Place Order</button>
+    </mat-card>
+
+  </div>
+  <div>
+    <mat-card (click)="customer()" ><h3>Customer Details</h3>
+      <div *ngIf="!customerDetails" >
+        <app-form></app-form></div>
+    </mat-card>
+   
+    <input style="padding: 20px 774px 20px 20px;" type="text" value="Order Summary">
+
+  </div>
+</div>

@@ -1,0 +1,50 @@
+$color-white: #fff;
+$button-background-color: #82a70c;
+
+
+.main-content {
+  display:flex;
+  flex-direction: column;
+  width: 100%-20%;
+  margin: 40px;
+
+
+}
+
+  .header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+  }
+
+  .card-header{
+    display: flex;
+    justify-content: center;
+    background-color: 
+    rgb(171, 175, 179);
+  }
+.example-card {
+  display: flex;
+  padding: 10px;
+  margin: 20px;
+  height: 315px;
+  width: 233px;
+}
+
+.cardbody {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  margin-left: 90px;
+}
+
+
+.image{
+  height:"135px";
+   width:"105px"
+}

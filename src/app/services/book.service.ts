@@ -13,5 +13,11 @@ export class BookService {
     return this.http.get('http://localhost:8080/book/getallbooks');
   }
 
+  getBookById(id:number): Observable<any>{
+    return this.http.get('http://localhost:8080/book/getbyid/'+id);
+  }
 
+  getBookByName(search:string): Observable<any>{
+    return this.http.get('http://localhost:8080/book/getbybookname/'+search)
+  }
 }

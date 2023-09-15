@@ -11,29 +11,44 @@ export class HomeComponent implements OnInit{
   numberOfBooks=12;
 
   public books:Book[]=[];
-  order: any = [
-    {value: 'ascending', viewValue: 'ascending'},
-    {value: 'descending', viewValue: 'descending'},
-    {value: 'inserting', viewValue: 'inserting'},
+  order: string[] = [
+   "low-high","high-low","newest"
   ];
 
+  search:string="";
   constructor(private bookService:BookService){}
 
   ngOnInit(): void {
+    if(this.search==""){
       this.bookService.getBooks().subscribe(response =>{
         this.books=response.object;
         console.log(this.books);
         this.numberOfBooks=this.books.length;
-      })
+      })}
+      else{
+        this.bookService.getBookByName(this.search).subscribe(response => {
+          this.books=response.object;
+        })
+      }
   }
 
   added:boolean=true;
-  onClick(){
+  onClick(id:number){
     if (this.added){
-    this.added=false;
+    this.bookService.getBookById(id).subscribe(response => {
+      console.log("Clicked")
+      this.added=false;
+    })
     }else
     this.added=true;
 
   }
+
+  // remove(id: number): void {
+  //   this.httpService.deleteEmployee(id).subscribe(response => {
+  //     console.log("deleted Succesfully");
+  //     this.ngOnInit();
+  //   })
+  // }
 
 }

@@ -1,49 +1,13 @@
-<div>
-    <div class="label">
-        <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name">
-        </mat-form-field> &nbsp;&nbsp;&nbsp;
-        <!-- </div>
-    <div class="label"> -->
-        <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last Name">
-        </mat-form-field>
+<header>
+    <div class="row-content">
+        <img src="../assets/education.svg" alt="">
+        <h3>BookStore</h3>
+        &nbsp;&nbsp;&nbsp;
+        <i ><mat-icon>search</mat-icon></i>
+        <input type="text" placeholder="search for book" (input)="search">
+        <span>Cart</span>
+        <a routerLink="/cart">
+        <img src="../assets/supermarket.svg" alt="" ></a>
     </div>
-    <div class="label">
-        <mat-form-field appearance="outline">
-            <mat-label>pincode</mat-label>
-            <input matInput placeholder="Pin code">
-        </mat-form-field> &nbsp;&nbsp;&nbsp;
-        <!-- </div>
-        <div class="label"> -->
-        <mat-form-field appearance="outline">
-            <mat-label>Locality</mat-label>
-            <input matInput placeholder="Locality">
-        </mat-form-field>
-    </div><label>Address</label>
-    <div class="label">
-        
-        <textarea name="text" cols="64" rows="5"></textarea>
-    </div><br><br>
-    <div class="label">
-        <mat-form-field appearance="outline">
-            <mat-label>city/town</mat-label>
-            <input matInput placeholder="city">
-        </mat-form-field> &nbsp;&nbsp;&nbsp;
-        <mat-form-field appearance="outline">
-            <mat-label>Locality</mat-label>
-            <input matInput placeholder="Landm">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-label>Type</mat-label><br>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Home</mat-radio-button>
-            <mat-radio-button value="2">Work</mat-radio-button>
-            <mat-radio-button value="2"></mat-radio-button>
-        </mat-radio-group>
-    </div>
-    <button mat-raised-button color="primary">Continue</button>
-</div>
+    
+</header>

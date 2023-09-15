@@ -11,7 +11,21 @@ export class CartComponent {
 
   books:Book[]=[];
 
-  cartItems:number=2;
+  public cartItems:number=1;
+  numberOfBooks:number=20;
+  
+ increase(){
+  if(this.cartItems<this.numberOfBooks){
+  this.cartItems++;
+  }
+ }
+
+ decrease(){
+  if(this.cartItems>1){
+  this.cartItems--;
+  }
+ }
+
   constructor(private bookService:BookService){}
 
   ngOnInit(): void {
@@ -34,6 +48,12 @@ export class CartComponent {
   customer(){
     if(this.customerDetails){
       this.customerDetails=!this.customerDetails;
+    }
+  }
+  order=true;
+  orderSummary(){
+    if(this.order){
+      this.order=!this.order;
     }
   }
 }

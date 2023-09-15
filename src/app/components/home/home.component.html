@@ -6,9 +6,10 @@
         <mat-form-field>
             <mat-label>sort by relavance</mat-label>
             <mat-select>
-                <mat-option *ngFor="let option of order" [value]="order.value">
-                    {{option.viewValue}}
+                <mat-option *ngFor="let option of order" [value]="option">
+                    {{option}}
                 </mat-option>
+                
             </mat-select>
         </mat-form-field>
     </div>
@@ -26,11 +27,18 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <div >
-                    <button mat-button style="background-color: #A03037;"*ngIf="added" (click)="onClick()">ADD TO BAG</button>
-                    <button mat-button *ngIf="!added" style="background-color: blue;" (click)="onClick()">Added to Bag</button>
+                    <div>
+                        <ng-template #NotAdded>
+                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book.bookId)">Added to Bag</button>
+                        </ng-template>
+                        <ng-container *ngIf="added;else NotAdded">
+                            <div class="btngroup">
+                                <button mat-button style="background-color: #A03037;" (click)="onClick(book.bookId)">ADD TO BAG</button>     
+                                <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
+                            </div>
+                        </ng-container>
                 </div>
-                    <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
+                    
                 </mat-card-actions>
             </mat-card>
         </div>

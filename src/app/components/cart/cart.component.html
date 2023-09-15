@@ -17,23 +17,85 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="actions">
-          <div class="circle">_</div>
+          <button class="circle" (click)="decrease()" >-</button>
           <div class="rectangle">{{cartItems}}</div>
-          <div class="circle">+</div>
-          
-        </div><button style="margin-left: 30px; padding:10px;">Remove</button>
+          <button class="circle" (click)="increase()" >+</button>
+        </div><button style="margin-left: 30px; padding:10px;"  routerLink="/a">Remove</button>
       </mat-card-actions>
-      <button  class="order-button" mat-raised-button color="primary">Place Order</button>
+      <button  class="order-button" mat-raised-button color="primary" *ngIf="customerDetails" (click)="customer()" >Place Order</button>
     </mat-card>
 
   </div>
   <div>
-    <mat-card (click)="customer()" ><h3>Customer Details</h3>
+    <mat-card><h3>Customer Details</h3>
       <div *ngIf="!customerDetails" >
-        <app-form></app-form></div>
+        <div>
+          <div class="edit"><button>edit</button></div>
+          <br>
+          <div class="label">
+              <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="First Name">
+              </mat-form-field> &nbsp;&nbsp;&nbsp;
+              <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Last Name">
+              </mat-form-field>
+          </div>
+          <div class="label">
+              <mat-form-field appearance="outline">
+                  <mat-label>pincode</mat-label>
+                  <input matInput placeholder="Pin code">
+              </mat-form-field> &nbsp;&nbsp;&nbsp;
+              <mat-form-field appearance="outline">
+                  <mat-label>Locality</mat-label>
+                  <input matInput placeholder="Locality">
+              </mat-form-field>
+          </div><label>Address</label>
+          <div class="label">
+              
+              <textarea name="text" cols="64" rows="5"></textarea>
+          </div><br><br>
+          <div class="label">
+              <mat-form-field appearance="outline">
+                  <mat-label>city/town</mat-label>
+                  <input matInput placeholder="city">
+              </mat-form-field> &nbsp;&nbsp;&nbsp;
+              <mat-form-field appearance="outline">
+                  <mat-label>Locality</mat-label>
+                  <input matInput placeholder="Landm">
+              </mat-form-field>
+          </div>
+          <div>
+              <mat-label>Type</mat-label><br>
+              <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Home</mat-radio-button>
+                  <mat-radio-button value="2">Work</mat-radio-button>
+                  <mat-radio-button value="2">other</mat-radio-button>
+              </mat-radio-group>
+          </div>
+          <button mat-raised-button color="primary" *ngIf="order" (click)="orderSummary()">Continue</button>
+      </div></div>
     </mat-card>
-   
-    <input style="padding: 20px 774px 20px 20px;" type="text" value="Order Summary">
+  </div>
+  <div>
+    <mat-card>
+      <h3>Order Summary</h3>
+      <div *ngIf="!order">
+      <mat-card-content class="content" >
+        <img mat-card-image class="card" src="../assets/Image 10.png" alt="picture">
+        &nbsp;&nbsp;
+        <div>Dont make me
+          <br> <span style="color: rgba(88, 84, 84, 0.837);">by
+            Sourabh</span>
+          <br><br>&nbsp;&nbsp; Rs.150
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="checkout">
+        <button mat-raised-button color="primary">checkout</button>
+      </mat-card-actions>
+      </div>
 
+    </mat-card>
   </div>
 </div>

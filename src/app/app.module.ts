@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { FormComponent } from './components/form/form.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormComponent } from './components/form/form.component';
     HomeComponent,
     CartComponent,
     FormComponent,
+    LoginComponent,
     
   ],
   imports: [

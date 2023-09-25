@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="main-content">
   <div class="example-card">
     <mat-card>
@@ -20,7 +21,7 @@
           <button class="circle" (click)="decrease()" >-</button>
           <div class="rectangle">{{cartItems}}</div>
           <button class="circle" (click)="increase()" >+</button>
-        </div><button style="margin-left: 30px; padding:10px;"  routerLink="/a">Remove</button>
+        </div><button style="margin-left: 30px; padding:10px;"  routerLink="/home">Remove</button>
       </mat-card-actions>
       <button  class="order-button" mat-raised-button color="primary" *ngIf="customerDetails" (click)="customer()" >Place Order</button>
     </mat-card>
@@ -88,14 +89,13 @@
         <div>Dont make me
           <br> <span style="color: rgba(88, 84, 84, 0.837);">by
             Sourabh</span>
-          <br><br>&nbsp;&nbsp; Rs.150
+          <br><br>&nbsp;&nbsp; <span>Rs:{{150*cartItems}}</span>
         </div>
       </mat-card-content>
       <mat-card-actions class="checkout">
         <button mat-raised-button color="primary">checkout</button>
       </mat-card-actions>
       </div>
-
     </mat-card>
   </div>
 </div>

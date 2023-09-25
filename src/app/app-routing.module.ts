@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
-import { FormComponent } from './components/form/form.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  { path:'a', component:HomeComponent}, 
+
+  { path:'home', component:HomeComponent}, 
   { path:'cart' , component:CartComponent},
-  { path:'form' , component:FormComponent},    
-  { path:'', component:LoginComponent}
+  { path:'header' , component:HeaderComponent},    
+  { path:'login', component:LoginComponent},
+  { path:'register', component:RegisterComponent}
 ];
 
 @NgModule({

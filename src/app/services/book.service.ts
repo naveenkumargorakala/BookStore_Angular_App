@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class BookService {
 
   constructor(private http:HttpClient) { }
@@ -20,4 +20,5 @@ export class BookService {
   getBookByName(search:string): Observable<any>{
     return this.http.get('http://localhost:8080/book/getbybookname/'+search)
   }
+  
 }

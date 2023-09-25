@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit{
       else{
         this.bookService.getBookByName(this.search).subscribe(response => {
           this.books=response.object;
+          console.log(this.books);
+          this.ngOnInit();
         })
       }
   }

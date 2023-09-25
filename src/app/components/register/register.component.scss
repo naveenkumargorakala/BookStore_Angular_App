@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    background-color: rgba(225, 219, 219, 0.936);
+    flex-direction: column;
+    align-items: center;
+   border-radius: 5px;
+}
+form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+mat-form-field{
+    width: 50%;
+}
+.visible{
+    display: flex;
+    flex-direction: column;
+}
+.row-conent{
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    padding:20px;
+    display: flex;
+    flex-direction: row;
+    
+}

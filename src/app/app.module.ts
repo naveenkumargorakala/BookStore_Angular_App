@@ -8,16 +8,18 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
-import { FormComponent } from './components/form/form.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CartComponent,
-    FormComponent,
+    HeaderComponent,
     LoginComponent,
+    RegisterComponent,
     
   ],
   imports: [

@@ -30,11 +30,11 @@
                 <mat-card-actions>
                     <div>
                         <ng-template #NotAdded>
-                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book.bookId)">Added to Bag</button>
+                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book)">Added to Bag</button>
                         </ng-template>
-                        <ng-container *ngIf="added;else NotAdded">
+                        <ng-container *ngIf="!book.added;else NotAdded">
                             <div class="btngroup">
-                                <button mat-button style="background-color: #A03037;" (click)="onClick(book.bookId)">ADD TO BAG</button>     
+                                <button mat-button style="background-color: #A03037;" (click)="onClick(book)">ADD TO BAG</button>     
                                 <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
                             </div>
                         </ng-container>

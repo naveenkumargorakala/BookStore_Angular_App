@@ -11,6 +11,9 @@ import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { RegisterComponent } from './components/register/register.component';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    NotfoundComponent,
+    ForgotpasswordComponent,
+    OrderComponent,
     
   ],
   imports: [

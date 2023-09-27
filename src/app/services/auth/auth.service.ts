@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,9 +8,24 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private router: Router) { }
 
   login(login:any): Observable<any>{
     return this.http.post('http://localhost:8080/user/login',login)
+  }
+
+ 
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('authToken') === 'true';
+  }
+
+  canActivate(): boolean {
+    if (!this.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    return true;
   }
 }

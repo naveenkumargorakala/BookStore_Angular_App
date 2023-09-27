@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  numberOfBooks=12;
+  numberOfBooks=0;
 
   public books:Book[]=[];
   order: string[] = [
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit{
   ];
 
   search:string="";
-  constructor(private bookService:BookService){}
+  constructor(private bookService:BookService,
+    private cartItems:CartService
+    ){}
 
   ngOnInit(): void {
     if(this.search==""){
@@ -34,23 +37,22 @@ export class HomeComponent implements OnInit{
       }
   }
 
-  added:boolean=true;
-  onClick(id:number){
-    if (this.added){
-    this.bookService.getBookById(id).subscribe(response => {
+  // added:boolean=true;
+  onClick(book:Book){
+    if (!book.added){
+    this.bookService.getBookById(book.bookId).subscribe(response => {
       console.log("Clicked")
-      this.added=false;
-    })
-    }else
-    this.added=true;
+      book.added=true;
+      this.cartItems.incrementItemCount(book.bookId);
+    });
+    }else{
+    book.added=false;
+    this.cartItems.decrementItemCount(book.bookId);
+    }
+    
+    }
 
   }
 
-  // remove(id: number): void {
-  //   this.httpService.deleteEmployee(id).subscribe(response => {
-  //     console.log("deleted Succesfully");
-  //     this.ngOnInit();
-  //   })
-  // }
 
-}
+

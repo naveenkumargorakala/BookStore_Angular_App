@@ -25,7 +25,14 @@ export class RegisterComponent implements OnInit {
  public user=new User;
 
 
-ngOnInit(): void {}
+ngOnInit(): void {
+  if(localStorage.getItem('authToken')){
+    this.http.user().subscribe(response => {
+      console.log("sss: "+response)
+    }
+    );
+  }
+}
   //create a variable type formgroup
   registrationFormGroup: FormGroup;
 

@@ -3,11 +3,17 @@
         <img src="../assets/education.svg" alt="">
         <h3>BookStore</h3>
         &nbsp;&nbsp;&nbsp;
-        <!-- <mat-icon>search</mat-icon> -->
+        <mat-icon>search</mat-icon>
         <input type="text" placeholder="search for book" (input)="search">
-        <span>Cart</span>
-        <a routerLink="/cart">
-        <img src="../assets/supermarket.svg" alt="" ></a>
+        <span class="span">Cart</span>
+        <div  class="cart">
+            <span>{{cartItemCount}}</span>
+        <!-- <a routerLink="/cart"> -->
+        <img src="../assets/supermarket.svg" (click)="onSubmit()" alt="" >
+    <!-- </a> -->
+        </div>
+        <button mat-button style="margin-left: 150px;" color="primary" (click)="logout()" ><b>{{logg}}</b></button>
+        <!-- <button mat-button style="margin-left: 150px;" color="primary" (click)="log()" ><b>Login</b></button> -->
+
     </div>
-    
 </header>

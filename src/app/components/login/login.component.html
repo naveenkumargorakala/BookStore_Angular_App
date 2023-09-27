@@ -7,16 +7,16 @@
         </mat-form-field>
         <br>
         <mat-form-field>
-            <input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" #passwordField formControlName="password">
+            <input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" #passwordField formControlName="password" placeholder="password">
             <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
               <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
           </mat-form-field>̥
 
-        <button mat-flat-button type="submit" color="warn">sign-in</button>
+        <button mat-flat-button type="submit" color="warn" style="padding: 10px;">sign-in</button>
 
         <div class="actions">
-            <a href="" style="margin-right: 35px;"> forgot password</a>
+            <a href="/forgotpassword" style="margin-right: 35px;"> forgot password</a>
 
             <button mat-flat-button color="primary" routerLink="/register">Register</button>
         </div>

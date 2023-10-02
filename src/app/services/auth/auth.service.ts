@@ -15,17 +15,7 @@ export class AuthService {
     return this.http.post('http://localhost:8080/user/login',login)
   }
 
- 
-
   isLoggedIn(): boolean {
     return localStorage.getItem('authToken') === 'true';
-  }
-
-  canActivate(): boolean {
-    if (!this.isLoggedIn()) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    return true;
   }
 }

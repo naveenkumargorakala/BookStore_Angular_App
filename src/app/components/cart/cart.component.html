@@ -1,32 +1,36 @@
-<app-header></app-header>
 <div class="main-content">
-  <div class="example-card">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>My Cart({{cartItems}})
-          <br>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="content">
-        <img mat-card-image class="card" src="../assets/Image 10.png" alt="picture">
-        &nbsp;&nbsp;
-        <div>Dont make me
-          <br> <span style="color: rgba(88, 84, 84, 0.837);">by
-            Sourabh</span>
-          <br><br>&nbsp;&nbsp; Rs.150
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <div class="actions">
-          <button class="circle" (click)="decrease()" >-</button>
-          <div class="rectangle">{{cartItems}}</div>
-          <button class="circle" (click)="increase()" >+</button>
-        </div><button style="margin-left: 30px; padding:10px;"  routerLink="/home">Remove</button>
-      </mat-card-actions>
-      <button  class="order-button" mat-raised-button color="primary" *ngIf="customerDetails" (click)="customer()" >Place Order</button>
-    </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>My Cart({{cartItems}})
+        <br>
+      </mat-card-title>
+    </mat-card-header>
+    <div class="example-card" *ngFor="let book of books">
+      <mat-card>
+        
+        <mat-card-content class="content" >
+          <img mat-card-image class="card" src={{book.bookImg}} alt="picture">
+          &nbsp;&nbsp;
+          <div>{{book.bookName}}
+            <br> <span style="color: rgba(88, 84, 84, 0.837);">by
+              {{book.authorName}}</span>
+            <br><br>&nbsp;&nbsp;{{book.price}}
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="actions">
+            <button class="circle" (click)="decrease(book)" >-</button>
+            <div class="rectangle">{{cartItems}}</div>
+            <button class="circle" (click)="increase(book)" >+</button>
+          </div><button style="margin-left: 30px; padding:10px;"  routerLink="/home">Remove</button>
+        </mat-card-actions>
+        
+      </mat-card>
+    </div>
+    <button  class="order-button" mat-raised-button color="primary" *ngIf="customerDetails" (click)="placeOrder()" >Place Order</button>
 
-  </div>
+  </mat-card>
+  
   <div>
     <mat-card><h3>Customer Details</h3>
       <div *ngIf="!customerDetails" >
@@ -45,8 +49,8 @@
           </div>
           <div class="label">
               <mat-form-field appearance="outline">
-                  <mat-label>pincode</mat-label>
-                  <input matInput placeholder="Pin code">
+                  <mat-label>Landmark</mat-label>
+                  <input matInput placeholder="Landmark">
               </mat-form-field> &nbsp;&nbsp;&nbsp;
               <mat-form-field appearance="outline">
                   <mat-label>Locality</mat-label>
@@ -63,7 +67,7 @@
                   <input matInput placeholder="city">
               </mat-form-field> &nbsp;&nbsp;&nbsp;
               <mat-form-field appearance="outline">
-                  <mat-label>Locality</mat-label>
+                  <mat-label>pincode</mat-label>
                   <input matInput placeholder="Landm">
               </mat-form-field>
           </div>

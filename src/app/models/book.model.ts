@@ -6,5 +6,5 @@ export class Book {
     bookImg!:string;
     price!:number;
     quantity!:number;
-    added: any;
+    added: boolean=false;
 }

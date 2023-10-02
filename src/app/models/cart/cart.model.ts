@@ -1,5 +1,4 @@
 export class Cart {
-    userId!:number;
-    bookIds!:number[];
+    bookId!:number;
     quantity!:number;
 }

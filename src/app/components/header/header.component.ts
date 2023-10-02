@@ -18,22 +18,24 @@ export class HeaderComponent {
   cart!: Cart;
   public books: Book[] = [];
 
+
   constructor(private bookService: BookService,
     private cartService: CartService,
     private router: Router,
     private userService: UserService) { }
   // cartItems:number=5;
   bookIds: number[] = [];
-
   search = "";
-
+  email: any = localStorage.getItem('email');
   cartItemCount: number = 0;
-
   user!: User;
+  userId: number = 0;
   token: any;
   logg: string = '';
-  userId: number = 0;
   quantity: number = 1;
+  cartId!: number;
+
+
 
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class HeaderComponent {
     this.cartService.cartItems$.subscribe(response => {
       this.cartItemCount = response.count;
     });
+    token: String;
+    this.token = localStorage.getItem('authToken')
     if (this.token) {
       this.logg = "Logout"
     }
@@ -48,37 +52,16 @@ export class HeaderComponent {
       this.logg = "Login"
   }
 
+  //logout from the app
   logout() {
     localStorage.removeItem("authToken");
+    this.cartService.clearCart();
     this.router.navigateByUrl('/login');
   }
 
-  onSubmit() {
-    this.cartService.cartItems$.subscribe(response => {
-      this.cartItemCount = response.count;
-      this.bookIds = response.itemIds;
-      console.log(this.bookIds);
-    });
 
-    // Subscribe to userService.user() to get user data
-    this.userService.user().subscribe(response => {
-      this.user = response.object; 
-      this.userId = this.user.userID; 
-      console.log("user: " + this.userId);
-    });
-
-    if (!this.cart) {
-      this.cart = {
-        userId: this.userId, 
-        bookIds: this.bookIds, 
-        quantity: this.quantity, 
-      };
-    }
-
-    console.log("carttd=afa: "+this.cart)
-    this.cartService.addToCart(this.userId,this.bookIds,this.quantity).subscribe(response => {
-      console.log("cart: " + response);
-    })
+  count: number = 0;
+  onClick() {
+    
   }
-
 }

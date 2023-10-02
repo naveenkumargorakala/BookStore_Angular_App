@@ -8,9 +8,9 @@
         <span class="span">Cart</span>
         <div  class="cart">
             <span>{{cartItemCount}}</span>
-        <!-- <a routerLink="/cart"> -->
-        <img src="../assets/supermarket.svg" (click)="onSubmit()" alt="" >
-    <!-- </a> -->
+        <a routerLink="/cart">
+        <img src="../assets/supermarket.svg" (click)="onClick()" alt="" >
+    </a>
         </div>
         <button mat-button style="margin-left: 150px;" color="primary" (click)="logout()" ><b>{{logg}}</b></button>
         <!-- <button mat-button style="margin-left: 150px;" color="primary" (click)="log()" ><b>Login</b></button> -->

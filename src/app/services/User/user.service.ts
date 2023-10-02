@@ -1,7 +1,7 @@
 import { ObserversModule } from '@angular/cdk/observers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +33,21 @@ export class UserService {
     return this.http.get('http://localhost:8080/user/retrieve', options);
   }
 
+  getUserByEmail(email:string):Observable<any>{
+    return this.http.get('http://localhost:8080/user/getbyemail/'+email);
+  }
+
+
+  private userIdSubject = new BehaviorSubject<number | null>(null);
+  userId$ = this.userIdSubject.asObservable();
+  
+  // Set the user ID after successful login
+  setUserId(userId: number) {
+    this.userIdSubject.next(userId);
+  }
+
+  // Get the logged-in user's ID
+  getUserId(): number | null {
+    return this.userIdSubject.value;
+  }
 }

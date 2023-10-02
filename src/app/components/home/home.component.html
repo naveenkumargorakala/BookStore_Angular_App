@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="main-content">
     <div class="header-content">
         <div>
@@ -29,17 +28,16 @@
 
                 <mat-card-actions>
                     <div>
-                        <ng-template #NotAdded>
-                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book)">Added to Bag</button>
-                        </ng-template>
                         <ng-container *ngIf="!book.added;else NotAdded">
                             <div class="btngroup">
                                 <button mat-button style="background-color: #A03037;" (click)="onClick(book)">ADD TO BAG</button>     
                                 <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
                             </div>
                         </ng-container>
+                        <ng-template #NotAdded>
+                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book)">Added to Bag</button>
+                        </ng-template>   
                 </div>
-                    
                 </mat-card-actions>
             </mat-card>
         </div>

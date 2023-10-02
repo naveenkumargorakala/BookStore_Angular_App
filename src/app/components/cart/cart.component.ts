@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book.model';
+import { UserService } from 'src/app/services/User/user.service';
 import { BookService } from 'src/app/services/book.service';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,54 +12,59 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class CartComponent {
 
-  books:Book[]=[];
+  books: Book[] = [];
+  public cartItems: number = 1;
+  numberOfBooks: number = 0;
+  userId!: number;
+  cartId!: number;
 
-  public cartItems:number=1;
-  numberOfBooks:number=20;
-  
- increase(){
-  if(this.cartItems<this.numberOfBooks){
-  this.cartItems++;
+  increase(book: Book) {
+    if (this.cartItems < this.numberOfBooks) {
+      this.cartItems = this.cartItems + 1;
+    }
   }
- }
 
- decrease(){
-  if(this.cartItems>1){
-  this.cartItems--;
+  decrease(book: Book) {
+    if (this.cartItems > 1) {
+      this.cartItems = this.cartItems - 1;
+    }
   }
- }
 
-  constructor(private bookService:BookService){}
+  constructor(private bookService: BookService,
+    private cartService: CartService,
+    private userService: UserService,
+    private orderService: OrderService) { }
 
   ngOnInit(): void {
-      this.bookService.getBooks().subscribe(response =>{
-        this.books=response;
-        console.log(this.books);
-        // this.numberOfBooks=this.books.length;
+    this.cartService.getCartItem().subscribe(
+      {
+        next: (response => {
+          this.books = response.object.cartItems;
+          console.log("printit");
+          console.log("books: " + response)
+          console.log("book od book:", this.books);
+        })
       })
   }
 
-  added:boolean=true;
-  onClick(){
-    if (this.added){
-    this.added=false;
-    }else
-    this.added=true;
-  }
-
-  customerDetails=true;
-  customer(){
-    if(this.customerDetails){
-      this.customerDetails=!this.customerDetails;
+  customerDetails = true;
+  placeOrder() {
+    if (this.customerDetails) {
+      this.customerDetails = !this.customerDetails;
+      //get cart data of loggedin user
+      // this.cartService.getCartItem().subscribe(
+      //   response => {
+      //     console.log("token");
+      //   this.books=response.object.books;
+      //   console.log("books are:",this.books)
+      // })
     }
   }
-  order=true;
-  orderSummary(){
-    if(this.order){
-      this.order=!this.order;
+  order = true;
+  orderSummary() {
+    if (this.order) {
+      this.order = !this.order;
     }
   }
 
-
-  
 }
